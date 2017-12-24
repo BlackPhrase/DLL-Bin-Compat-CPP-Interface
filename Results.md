@@ -1,5 +1,6 @@
 ### Version #1
 
+```cpp
 struct IUnknown
 {
 	virtual destructor = default;
@@ -14,6 +15,7 @@ class CClass : public IClass
 {
 	// methods impls
 };
+```
 
 **Result:**
 * Works fine when both app and lib are using the same compiler (MSVC-only/MinGW-only);
@@ -22,6 +24,7 @@ class CClass : public IClass
 
 ### Version #2
 
+```cpp
 struct IClass
 {
 	// methods
@@ -33,6 +36,7 @@ class CClass : public IClass
 {
 	// methods impls
 };
+```
 
 **Result:**
 * Works fine when both app and lib are using the same compiler (MSVC-only/MinGW-only);

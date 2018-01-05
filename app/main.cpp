@@ -23,6 +23,8 @@ int main(int argc, char **argv)
 	
 	pPlugin->Shutdown();
 	
+	//pPlugin->Release();
+	
 	system("pause");
 	
 	FreeLibrary(hPlugin);

@@ -1,6 +1,8 @@
 #include <cstdio>
 #include "Plugin.hpp"
 
+//IUnknownLocal::~IUnknownLocal() = default;
+
 void CPlugin::Init()
 {
 	printf("Plugin init...\n");

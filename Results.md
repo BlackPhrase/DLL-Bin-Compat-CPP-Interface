@@ -8,7 +8,7 @@ struct IUnknown
 
 struct IClass : public IUnknown
 {
-	// methods only, no destructor
+	// methods decls
 };
 
 class CClass : public IClass
@@ -19,8 +19,8 @@ class CClass : public IClass
 
 **Result:**
 * Works fine when both app and lib are using the same compiler (MSVC-only/MinGW-only);
-* MinGW app and MSVC lib crashes; (TODO: should check again);
-* MSVC app and MinGW lib crashes; (TODO: should check again);
+* MinGW app and MSVC lib calls some methods and crashes;
+* MSVC app and MinGW lib simply crashes;
 
 ### Version #2
 
@@ -42,3 +42,32 @@ class CClass : public IClass
 * Works fine when both app and lib are using the same compiler (MSVC-only/MinGW-only);
 * MinGW app and MSVC lib works fine;
 * MSVC app and MinGW lib - some methods didn't get called but works;
+
+### Version #3
+
+```cpp
+struct IUnknown
+{
+	virtual void Release() = 0;
+}
+
+struct IClass : public IUnknown
+{
+	void Release() override
+	{
+		delete this; // MSVC crashes here if allocated statically
+	};
+	
+	// other methods decls
+};
+
+class CClass : public IClass
+{
+	// methods impls
+};
+```
+
+**Result:**
+* Works fine when both app and lib are using the same compiler (MSVC-only/MinGW-only);
+* MinGW app and MSVC works fine(!);
+* MSVC app and MinGW works fine(!);

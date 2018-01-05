@@ -1,10 +1,19 @@
 #pragma once
 
 #ifdef WANNABECOM
+
+#ifdef WANNABECOM_INLINE_DESTRUCTOR
 struct IUnknownLocal
 {
 	virtual ~IUnknownLocal() = default;
 };
+#else
+struct IUnknownLocal
+{
+	//virtual ~IUnknownLocal() = 0;
+	virtual void Release() = 0;
+};
+#endif
 
 struct IPlugin : public IUnknownLocal
 {

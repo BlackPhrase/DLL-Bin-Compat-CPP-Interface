@@ -8,6 +8,8 @@ public:
 	CPlugin() = default;
 	~CPlugin() = default;
 	
+	void Release() override {delete this;}
+	
 	void Init() override;
 	void Shutdown() override;
 };

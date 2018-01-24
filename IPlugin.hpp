@@ -20,6 +20,8 @@ struct IPlugin : public IUnknownLocal
 	virtual void Init() = 0;
 	virtual void Shutdown() = 0;
 };
+
+using pfnGetPlugin = IUnknownLocal *(*)();
 #else
 struct IPlugin
 {
@@ -28,6 +30,6 @@ struct IPlugin
 protected:
 	virtual ~IPlugin() = default;
 };
-#endif
 
 using pfnGetPlugin = IPlugin *(*)();
+#endif

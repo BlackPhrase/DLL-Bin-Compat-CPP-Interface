@@ -14,7 +14,11 @@ int main(int argc, char **argv)
 	if(!fnGetPlugin)
 		return EXIT_FAILURE;
 	
+#ifdef WANNABECOM
+	auto pPlugin{(IPlugin*)fnGetPlugin()};
+#else
 	auto pPlugin{fnGetPlugin()};
+#endif
 	
 	if(!pPlugin)
 		return EXIT_FAILURE;

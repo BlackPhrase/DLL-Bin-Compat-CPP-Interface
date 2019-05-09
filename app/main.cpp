@@ -2,6 +2,10 @@
 #include <windows.h>
 #include "IPlugin.hpp"
 
+#ifdef USE_NAMESPACES
+using namespace pluginspace;
+#endif
+
 int main(int argc, char **argv)
 {
 	auto hPlugin{LoadLibrary("liblib")};

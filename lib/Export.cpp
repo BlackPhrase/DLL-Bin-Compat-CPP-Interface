@@ -1,5 +1,9 @@
 #include "Plugin.hpp"
 
+#ifdef USE_NAMESPACES
+using namespace pluginspace;
+#endif
+
 #define EXPORT __declspec(dllexport)
 #define C_EXPORT extern "C" EXPORT
 

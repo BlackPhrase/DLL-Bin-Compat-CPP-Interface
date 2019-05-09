@@ -1,5 +1,10 @@
 #pragma once
 
+#ifdef USE_NAMESPACES
+namespace pluginspace
+{
+#endif
+
 #ifdef WANNABECOM
 
 #ifdef WANNABECOM_INLINE_DESTRUCTOR
@@ -32,4 +37,8 @@ protected:
 };
 
 using pfnGetPlugin = IPlugin *(*)();
+#endif
+
+#ifdef USE_NAMESPACES
+}; // namespace pluginspace
 #endif

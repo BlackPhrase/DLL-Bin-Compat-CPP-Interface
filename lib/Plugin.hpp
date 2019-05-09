@@ -2,6 +2,11 @@
 
 #include "IPlugin.hpp"
 
+#ifdef USE_NAMESPACES
+namespace pluginspace
+{
+#endif
+
 class CPlugin final : public IPlugin
 {
 public:
@@ -15,3 +20,7 @@ public:
 	void Init() override;
 	void Shutdown() override;
 };
+
+#ifdef USE_NAMESPACES
+}; // namespace pluginspace
+#endif
